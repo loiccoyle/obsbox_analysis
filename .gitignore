@@ -143,4 +143,4 @@ media
 static
 
 # ignore metadata files
-metadata/*
+metadata/*.h5
