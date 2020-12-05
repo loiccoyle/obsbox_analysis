@@ -3,8 +3,10 @@ from pathlib import Path
 import pandas as pd
 from pyobsbox import ObsBoxGenerator, make_lstm_ae, make_conv_ae
 
+from paths import metadata_path, model_path
+
 if __name__ == "__main__":
-    metadata_path = Path("../metadata") / "metadata_B1H.h5"
+    metadata_path = metadata_path / "metadata_B1H_Inst_1024.h5"
     metadata_df = pd.read_hdf(metadata_path, "metadata")
     # remove date time index
     metadata_df = metadata_df.reset_index()
