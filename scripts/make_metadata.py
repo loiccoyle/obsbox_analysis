@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
     db = DB(n_jobs=40)
     df = db.load()
-    df = df[(df["beam"] == 1) & (df["plane"] == "v") & (df["type"] == "Inst")]
+    df = df[(df["beam"] == 2) & (df["plane"] == "v") & (df["type"] == "Inst")]
     # remove known empty files from the pool
     files = list(set(df["file"].unique()) - known_no_data)
     # select more files to make up for files which contain 0 populated bunches

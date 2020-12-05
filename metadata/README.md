@@ -48,3 +48,17 @@ Keys:
 * type: instability
 * subset: False
 * shape: (12305947, 11)  (note: "date_time" is not the index)
+
+### `metadata_B2H_Inst_23528.h5`:
+* beam: 2
+* plane: horizontal
+* type: instability
+* subset: False
+* shape: (15850511, 11)  (note: "date_time" is not the index)
+
+### `metadata_B2V_Inst_60652.h5`:
+* beam: 2
+* plane: vertical
+* type: instability
+* subset: False
+* shape: (17435804, 11)  (note: "date_time" is not the index)
