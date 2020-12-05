@@ -144,3 +144,4 @@ static
 
 # ignore metadata files
 metadata/*.h5
+metadata/no_data.json
