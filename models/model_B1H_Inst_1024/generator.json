@@ -1,0 +1,1 @@
+{"metadata_path": "/afs/cern.ch/work/l/lcoyle/public/obsbox_analysis/metadata/metadata_B1H_Inst_1024.h5", "shuffle": true, "n_bunches": 128, "sequence_length": 2048, "batch_size": 4096}
