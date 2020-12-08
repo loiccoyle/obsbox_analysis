@@ -6,6 +6,6 @@
  * validation size: 0.1
 
 ### `model_B1H_Inst_34994`:
- * n_epochs: 3
+ * n_epochs: 5
  * metadata file: `metadata_B1H_Inst_34994.h5`
  * validation size: 0.1
