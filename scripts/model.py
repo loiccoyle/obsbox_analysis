@@ -1,6 +1,6 @@
 import json
-from pathlib import Path
 
+import numpy as np
 import pandas as pd
 from pyobsbox import ObsBoxGenerator
 from pyobsbox.models import make_lstm_ae, make_conv_ae
@@ -45,7 +45,7 @@ if __name__ == "__main__":
         workers=8,
     )
     # Save the model to file
-    model_name = df_to_name(metadata_df, base="model", extension="")
+    model_name = df_to_name(generator.fetched, base="model", extension="")
     model_path = models_folder / model_name
     while model_path.is_dir():
         model_path = models_folder / (model_path.name + "_")
@@ -54,8 +54,16 @@ if __name__ == "__main__":
     model_metadata = {}
     model_metadata["generator"] = generator.to_dict()
     model_metadata["history"] = hist.history
-    model_metadata["train_indices"] = train_metadata.index.to_list()
-    model_metadata["validation_indices"] = validation_metadata.index.to_list()
     json.dump(model_metadata, (model_path / "metadata.json").open("w"))
-    generator.fetched.to_hdf(model_path / "seen_train_metadata.h5", key='metadata')
-    validation_generator.fetched.to_hdf(model_path / "seen_validation_metadata.h5", key="metadata")
+
+    # save the train validation splitting
+    train_split_indices = train_metadata.index.to_numpy()
+    validation_split_indices = validation_metadata.index.to_numpy()
+    np.save(model_path / "train_split_indices.npy", train_split_indices)
+    np.save(model_path / "validation_split_indices.npy", validation_split_indices)
+
+    # save the indices of the data the model has seen
+    train_seen_indices = generator.fetched.index.to_numpy()
+    validation_seen_indices = generator.fetched.index.to_numpy()
+    np.save(model_path / "train_seen_indices.npy", train_seen_indices)
+    np.save(model_path / "validation_seen_indices.npy", validation_seen_indices)
